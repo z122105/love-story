@@ -56,7 +56,7 @@
 
     <div id="story" class="story">
         <h2>Here’s your story:</h2>
-        <a href="https://onedrive.live.com/edit?id=2AE4FF49733379D!sc44944edd62c4a0b86e66e916524e710&resid=2AE4FF49733379D!sc44944edd62c4a0b86e66e916524e710&cid=02ae4ff49733379d&ithint=file%2Cdocx&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3cvYy8wMmFlNGZmNDk3MzMzNzlkL0VlMUVTY1FzMWd0S2h1WnVrV1VrNXhBQlhPZmZxcktDbThhUTBnQVkzZjVDdWc_ZT1ISVREY3I&migratedtospo=true&wdo=2" target="_blank">Our Love Story</a>
+        <a href="" target="_blank">Our Love Story</a>
     </div>
 
     <script>
@@ -73,24 +73,130 @@
         function showNextQuestion(currentQuestion, answer = null) {
             if (currentQuestion === 2 && answer === 'no') {
                 alert("Ask your bby then.");
-                document.getElementById(`question${currentQuestion}`).classList.remove('visible');
-                document.getElementById(`question${currentQuestion}`).classList.add('visible');
+                document.getElementById(question${currentQuestion}).classList.remove('visible');
+                document.getElementById(question${currentQuestion}).classList.add('visible');
                 return;
             }
             if (currentQuestion === 4 && answer === 'no') {
                 alert("Would you like to know what happened a year ago?");
-                document.getElementById(`question${currentQuestion}`).classList.remove('visible');
-                document.getElementById(`question${currentQuestion}`).classList.add('visible');
+                document.getElementById(question${currentQuestion}).classList.remove('visible');
+                document.getElementById(question${currentQuestion}).classList.add('visible');
                 return;
             }
             if (currentQuestion === 5 && answer === 'no') {
                 alert("Do you love your bby?");
-                document.getElementById(`question${currentQuestion}`).classList.remove('visible');
-                document.getElementById(`question${currentQuestion}`).classList.add('visible');
+                document.getElementById(question${currentQuestion}).classList.remove('visible');
+                document.getElementById(question${currentQuestion}).classList.add('visible');
                 return;
             }
-            document.getElementById(`question${currentQuestion}`).classList.remove('visible');
-            document.getElementById(`question${currentQuestion + 1}`).classList.add('visible');
+            document.getElementById(question${currentQuestion}).classList.remove('visible');
+            document.getElementById(question${currentQuestion + 1}).classList.add('visible');
+            if (currentQuestion === 5 && answer === 'yes') {
+                document.getElementById('questions').style.display = 'none';
+                document.getElementById('story').classList.add('visible');
+            }
+        }
+
+        window.onload = function() {
+            document.getElementById('passwordPrompt').classList.add('visible');
+        }
+    </script>
+</body>
+</html>
+this is the code, any problems?
+[8:43 PM, 9/26/2024] zynb: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions and Story</title>
+    <style>
+        body {
+            background-color: violet;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .question, .story, .password {
+            display: none;
+        }
+        .visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <div id="passwordPrompt" class="password visible">
+        <p>Write the password to start:</p>
+        <input type="text" id="passwordInput">
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+
+    <div id="questions">
+        <div class="question" id="question1">
+            <p>Question 1: What is your name?</p>
+            <input type="text" id="answer1">
+            <button onclick="showNextQuestion(1)">Next</button>
+        </div>
+        <div class="question" id="question2">
+            <p>Question 2: Do you know what today is?</p>
+            <button onclick="showNextQuestion(2, 'yes')">Yes</button>
+            <button onclick="showNextQuestion(2, 'no')">No</button>
+        </div>
+        <div class="question" id="question3">
+            <p>What is it?</p>
+            <input type="text" id="answer2">
+            <button onclick="showNextQuestion(3)">Next</button>
+        </div>
+        <div class="question" id="question4">
+            <p>Would you like to know what happened a year ago?</p>
+            <button onclick="showNextQuestion(4, 'yes')">Yes</button>
+            <button onclick="showNextQuestion(4, 'no')">No</button>
+        </div>
+        <div class="question" id="question5">
+            <p>Do you love your bby?</p>
+            <button onclick="showNextQuestion(5, 'yes')">Yes</button>
+            <button onclick="showNextQuestion(5, 'no')">No</button>
+        </div>
+    </div>
+
+    <div id="story" class="story">
+        <h2>Here's your story:</h2>
+        <a href="#" target="_blank">Our Love Story</a>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            if (password === "lovely270923") {
+                document.getElementById('passwordPrompt').style.display = 'none';
+                document.getElementById('question1').classList.add('visible');
+            } else {
+                alert('Incorrect password. Please try again.');
+            }
+        }
+
+        function showNextQuestion(currentQuestion, answer = null) {
+            if (currentQuestion === 2 && answer === 'no') {
+                alert("Ask your bby then.");
+                document.getElementById(question${currentQuestion}).classList.remove('visible');
+                document.getElementById(question${currentQuestion + 1}).classList.add('visible');
+                return;
+            }
+            if (currentQuestion === 4 && answer === 'no') {
+                alert("Would you like to know what happened a year ago?");
+                document.getElementById(question${currentQuestion}).classList.remove('visible');
+                document.getElementById(question${currentQuestion + 1}).classList.add('visible');
+                return;
+            }
+            if (currentQuestion === 5 && answer === 'no') {
+                alert("Do you love your bby?");
+                document.getElementById(question${currentQuestion}).classList.remove('visible');
+                document.getElementById(question${currentQuestion}).classList.add('visible');
+                return;
+            }
+            document.getElementById(question${currentQuestion}).classList.remove('visible');
+            document.getElementById(question${currentQuestion + 1}).classList.add('visible');
             if (currentQuestion === 5 && answer === 'yes') {
                 document.getElementById('questions').style.display = 'none';
                 document.getElementById('story').classList.add('visible');
